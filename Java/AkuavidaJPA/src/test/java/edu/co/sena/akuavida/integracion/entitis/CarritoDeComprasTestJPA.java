@@ -131,20 +131,57 @@ public class CarritoDeComprasTestJPA {
         EntityManagerHelper.closeEntityManagerFactory();
 
     }
+
     @Test
     public void buscarPorTotal() {
-
-        String total = JOptionPane.showInputDialog("Inserte el total Del Carrito");
+        
+        String total = JOptionPane.showInputDialog("Insertar el total del carrito de compras");
 
         em = EntityManagerHelper.getEntityManager();
         EntityManagerHelper.beginTransaction();
 
-        CarritoDeCompras car = em.find(CarritoDeCompras.class, total);
+        Query query = em.createNamedQuery("CarritoDeCompras.findByTotal");
+        query.setParameter("total", Float.parseFloat(total));
+        
+        CarritoDeCompras carrito = (CarritoDeCompras)query.getSingleResult();
+        
+        List<CarritoDeCompras> lista = query.getResultList();
+        for (CarritoDeCompras lista1 : lista) {
+            System.out.println("ID carrito: "+lista1.getIDCarrito()+ " SubTotal: " + lista1.getSubtotal() + " Total: " + lista1.getTotal());
+            
+        }
+
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
+        EntityManagerHelper.closeEntityManagerFactory();
+        
+
+    }
+
+    
+
+    @Test
+    public void buscarPorSubTotal() {
+         String subTotal = JOptionPane.showInputDialog("Insertar el subtotal del carrito de compras");
+
+        em = EntityManagerHelper.getEntityManager();
+        EntityManagerHelper.beginTransaction();
+
+        Query query = em.createNamedQuery("CarritoDeCompras.findBySubtotal");
+        query.setParameter("subtotal", Float.parseFloat(subTotal));
+        
+        CarritoDeCompras carrito = (CarritoDeCompras)query.getSingleResult();
+        
+        List<CarritoDeCompras> lista = query.getResultList();
+        for (CarritoDeCompras lista1 : lista) {
+            System.out.println("ID carrito: "+lista1.getIDCarrito()+ " SubTotal: " + lista1.getSubtotal() + " Total: " + lista1.getTotal());
+            
+        }
+
         EntityManagerHelper.commit();
         EntityManagerHelper.closeEntityManager();
         EntityManagerHelper.closeEntityManagerFactory();
 
-        System.out.println(car.toString());
     }
 
 }

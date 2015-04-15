@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,7 +44,7 @@ public class CarritoDeCompras implements Serializable {
     @Basic(optional = false)
     @Column(name = "Subtotal")
     private float subtotal;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carritoDeCompras")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carritoDeCompras",fetch = FetchType.EAGER)
     private List<ItemsDelCarrito> itemsDelCarritoList;
 
     public CarritoDeCompras() {

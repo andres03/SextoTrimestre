@@ -5,12 +5,10 @@ package edu.co.sena.akuavida.integracion.entitis;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import edu.co.sena.akuavida.integracion.entitis.Categorias;
 import edu.co.sena.akuavida.integracion.jpa.util.EntityManagerHelper;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import org.junit.After;
@@ -45,7 +43,7 @@ public class CategoriaTestJPA {
     public void setUp() {
 
         categoria = new Categorias();
-        categoria.setIDCategoria(45);
+        categoria.setIDCategoria(46);
         categoria.setNombre("Purificadores Prueba");
         categoria.setPariente(1);
         categoria.setActiva(true);
@@ -124,8 +122,8 @@ public class CategoriaTestJPA {
         }
 
     }
-    
-     @Test
+
+    @Test
     public void buscarCategorias() {
 
         em = EntityManagerHelper.getEntityManager();
@@ -134,6 +132,72 @@ public class CategoriaTestJPA {
         List<Categorias> lis = q.getResultList();
         for (Categorias categoriaT : lis) {
             System.out.println(categoriaT.getIDCategoria() + " / " + categoriaT.getNombre() + " / " + categoriaT.getActiva() + " / " + categoriaT.getPariente());
+        }
+
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
+        EntityManagerHelper.closeEntityManagerFactory();
+
+    }
+
+    @Test
+    public void buscarPorNombre() {
+        String nombre = JOptionPane.showInputDialog("Insertar El nombre De La Categoria");
+
+        em = EntityManagerHelper.getEntityManager();
+        EntityManagerHelper.beginTransaction();
+
+        Query query = em.createNamedQuery("Categorias.findByNombre");
+        query.setParameter("nombre", nombre);
+
+        Categorias ca = (Categorias) query.getSingleResult();
+
+        List<Categorias> lista = query.getResultList();
+        for (Categorias categoriaT : lista) {
+            System.out.println("ID Categoria: " + categoriaT.getIDCategoria() + " Nombre: " + categoriaT.getNombre() + " Activa: " + categoriaT.getActiva() + " Pariente " + categoriaT.getPariente());
+        }
+
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
+        EntityManagerHelper.closeEntityManagerFactory();
+
+    }
+
+    @Test
+    public void buscarPorActiva() {
+
+        String activa = JOptionPane.showInputDialog("Insertar si esta activa la categoria o no");
+
+        em = EntityManagerHelper.getEntityManager();
+        EntityManagerHelper.beginTransaction();
+
+        Query query = em.createNamedQuery("Categorias.findByActiva");
+        query.setParameter("activa", Boolean.parseBoolean(activa));
+
+        List<Categorias> lista = query.getResultList();
+        for (Categorias categoriaT : lista) {
+            System.out.println("ID Categoria: " + categoriaT.getIDCategoria() + " Nombre: " + categoriaT.getNombre() + " Activa: " + categoriaT.getActiva() + " Pariente " + categoriaT.getPariente());
+        }
+
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
+        EntityManagerHelper.closeEntityManagerFactory();
+
+    }
+
+    @Test
+    public void buscarPorPariente() {
+        String pariente = JOptionPane.showInputDialog("Insertar el pariente de la categoria");
+
+        em = EntityManagerHelper.getEntityManager();
+        EntityManagerHelper.beginTransaction();
+
+        Query query = em.createNamedQuery("Categorias.findByPariente");
+        query.setParameter("pariente", Integer.parseInt(pariente));
+
+        List<Categorias> lista = query.getResultList();
+        for (Categorias categoriaT : lista) {
+            System.out.println("ID Categoria: " + categoriaT.getIDCategoria() + " Nombre: " + categoriaT.getNombre() + " Activa: " + categoriaT.getActiva() + " Pariente " + categoriaT.getPariente());
         }
 
         EntityManagerHelper.commit();

@@ -1,0 +1,12 @@
+#surefire
+#Tue Apr 14 21:59:46 COT 2015
+jpda.address=52961
+maven.ext.class.path=C\:\\Users\\Tatiana\\AppData\\Roaming\\NetBeans\\8.0.1\\maven-nblib\\netbeans-eventspy.jar
+file.encoding=UTF-8
+jpda.listen=true
+forkMode=once
+user.dir=C\:\\Users\\Tatiana\\Desktop\\SextoTrimestre\\Java\\AkuavidaJPA
+localRepository=C\:\\Users\\Tatiana\\.m2\\repository
+test=edu.co.sena.akuavida.integracion.entitis.CategoriaTestJPA
+basedir=C\:\\Users\\Tatiana\\Desktop\\SextoTrimestre\\Java\\AkuavidaJPA
+maven.surefire.debug=-Xdebug -Xrunjdwp\:transport\=dt_socket,server\=n,address\=52961

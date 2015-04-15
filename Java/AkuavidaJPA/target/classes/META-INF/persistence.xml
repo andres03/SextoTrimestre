@@ -2,28 +2,26 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="edu.co.sena_TareaClasesJPA_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>edu.co.sena.akuavida.integracion.entitis.CarritoDeCompras</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Categorias</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Cuenta</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Departamento</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Domicilio</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Inventario</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Pago</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Item</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.CarritoDeCompras</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Municipio</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Cuenta</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Factura</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Producto</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Inventario</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Item</class>
     <class>edu.co.sena.akuavida.integracion.entitis.ItemsDelCarrito</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Municipio</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Pago</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Pedido</class>
+    <class>edu.co.sena.akuavida.integracion.entitis.Producto</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Promociones</class>
     <class>edu.co.sena.akuavida.integracion.entitis.Ususario</class>
-    <class>edu.co.sena.akuavida.integracion.entitis.Pedido</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/akuavida?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="123456789"/>
-      <!-- <property name="eclipselink.ddl-generation" value="create-tables"/> -->
-      <property name="eclipselink.logging.level.sql" value="FINE"/>
     </properties>
   </persistence-unit>
 </persistence>
